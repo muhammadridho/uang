@@ -21,7 +21,7 @@ Some function can you call, after you has been import library
 ```
 ##### Validation
  ```javascript
- uang.formatter('xx0) //false
+ uang.formatter('xx0') //false
  uang.formatter('0.0') //false
   uang.formatter('100') //true
 ```
