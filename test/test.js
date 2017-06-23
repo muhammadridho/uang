@@ -24,7 +24,16 @@ describe('Check function formatter', () => {
   it('100 should return Rp. 100', function() {
        expect(uang.formatter(100)).to.equal('Rp. 100')
   })
-  it('10x0 should return Rp. 0', function() {
+  it('ff should return Rp. 0', function() {
        expect(uang.formatter('1x0')).to.equal('Rp. 0')
+  })
+  it('10.0 should return Rp. 0', function() {
+       expect(uang.formatter('1x0')).to.equal('Rp. 0')
+  })
+  it('0,1 should return Rp. 0', function() {
+       expect(uang.formatter('1x0')).to.equal('Rp. 0')
+  })
+  it('empty should return Rp. 0', function() {
+       expect(uang.formatter()).to.equal('Rp. 0')
   })
 })
