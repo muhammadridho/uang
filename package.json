@@ -1,0 +1,32 @@
+{
+  "name": "uang",
+  "version": "0.0.1",
+  "description": "Indonesian's Money NPM Modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "engines": {
+    "node": ">=4.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammadridho/uang.git"
+  },
+  "keywords": [
+    "uang",
+    "npm",
+    "indonesia",
+    "rupiah"
+  ],
+  "author": "muhammadridho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muhammadridho/uang/issues"
+  },
+  "homepage": "https://github.com/muhammadridho/uang#readme",
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2"
+  }
+}

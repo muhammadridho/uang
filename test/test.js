@@ -16,3 +16,15 @@ describe('Check function valid', () => {
        expect(uang.isValid('1xx')).to.equal(false)
   })
 })
+
+describe('Check function formatter', () => {
+  it('1000 should return Rp. 1.000', function() {
+       expect(uang.formatter(1000)).to.equal('Rp. 1.000')
+  })
+  it('100 should return Rp. 100', function() {
+       expect(uang.formatter(100)).to.equal('Rp. 100')
+  })
+  it('10x0 should return Rp. 0', function() {
+       expect(uang.formatter('1x0')).to.equal('Rp. 0')
+  })
+})
