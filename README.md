@@ -9,7 +9,7 @@ A library help
   you can import or require
 ```javascript
  //ES 5
-var uang = require 'redcarpet'
+var uang = require 'uang'
 //ES 6
 import uang from 'uang'
 ```
@@ -21,9 +21,9 @@ Some function can you call, after you has been import library
 ```
 ##### Validation
  ```javascript
- uang.formatter('xx0') //false
- uang.formatter('0.0') //false
-  uang.formatter('100') //true
+ uang.isValid('xx0') //false
+ uang.isValid('0.0') //false
+  uang.isValid('100') //true
 ```
 
 ## Tests
