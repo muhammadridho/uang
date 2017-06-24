@@ -44,10 +44,10 @@ const getData = new Promise((resolve, reject) => {
 const kurs = () => {
   let data = {},
       done = false
-  getData.then((output) => {
-    data = output
-    done = true
-  })
+      getData.then((output) => {
+        data = output
+        done = true
+      })
   //wait until data has finish
   require('deasync').loopWhile(function(){return !done;});
   return data
@@ -60,11 +60,12 @@ const toWords = (number) => {
 }
 
 const convertToWords = (number) => {
-  let unique = ["", "Satu ", "Dua ", "Tiga ", "Empat ", "Lima ", "Enam ", "Tujuh ", "Delapan ",
-              "Sembilan ", "Sepuluh ", "Sebelas "];
 
+  let kamus = ["", "Satu ", "Dua ", "Tiga ", "Empat ", "Lima ", "Enam ", "Tujuh ", "Delapan ",
+              "Sembilan ", "Sepuluh ", "Sebelas "];
+  //recursive until number < 0
   if(number < 12)
-    return unique[number];
+    return kamus[number];
   else if (number < 20)
     return convertToWords(number - 10) + "Belas ";
   else if (number < 100)

@@ -1,5 +1,5 @@
 # uang
-A library help
+This library serves to process data related to the money Indonesia, diantarnya formatting, the mention to the sentence, to the exchange rate currency
 
 ## Installation
   `npm install uang`

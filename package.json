@@ -1,6 +1,6 @@
 {
   "name": "uang",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Indonesian's Money NPM Modules",
   "main": "index.js",
   "scripts": {
