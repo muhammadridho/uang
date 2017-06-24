@@ -53,15 +53,44 @@ const kurs = () => {
   return data
 }
 
-const tukarNilai = (rupiah,params) => {
+const toWords = (number) => {
+  if (!isValid(number)) return  `0 Rupiah`
 
+  return convertToWords(number)+ 'rupiah'
 }
 
+const convertToWords = (number) => {
+  let unique = ["", "Satu ", "Dua ", "Tiga ", "Empat ", "Lima ", "Enam ", "Tujuh ", "Delapan ",
+              "Sembilan ", "Sepuluh ", "Sebelas "];
 
+  if(number < 12)
+    return unique[number];
+  else if (number < 20)
+    return convertToWords(number - 10) + "Belas ";
+  else if (number < 100)
+    return convertToWords((number - (number % 10))/10) + "Puluh " + convertToWords(number%10);
+  else if (number < 200)
+    return "Seratus " + convertToWords(number - 100);
+  else if (number < 1000)
+    return convertToWords((number - (number % 100))/100) + "Ratus " + convertToWords(number % 100);
+  else if (number < 2000)
+    return "Seribu " + convertToWords(number - 1000);
+  else if (number < 1000000)
+    return convertToWords((number - (number % 1000))/1000) + "Ribu " + convertToWords(number % 1000);
+  else if (number < 1000000000)
+    return convertToWords((number - (number % 1000000))/1000000) + "Juta " + convertToWords(number % 1000000);
+  else if (number < 1000000000000)
+    return convertToWords((number - (number % 1000000000))/1000000000) + "Miliar " + convertToWords(number % 1000000000);
+  else if (number < 1000000000000000)
+    return convertToWords((number - (number % 1000000000000))/1000000000000) + "Triliun " + convertToWords(number % 1000000000000);
+}
 
-console.log(kurs());
+console.log(toWords(10000));
+
 
 module.exports = {
   isValid,
-  formatter
+  formatter,
+  kurs,
+  toWords
 }
