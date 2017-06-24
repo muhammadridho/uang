@@ -19,33 +19,47 @@ const formatter = (input, firstWord) => {
   return `${firstWord || 'Rp.'} ${nominal.join('').split('').reverse().join('')}`
 }
 
-const kurs = (callback) => {
+const getData = new Promise((resolve, reject) => {
+    http.get('http://api.fixer.io/latest?base=IDR', res => {
+        let body = [],
+            data = {},
+            output = {}
 
-  http.get('http://api.fixer.io/latest?base=IDR', res => {
-      let body = [],
-          data = {}
-      res.on('data', chunk => {
-          body.push(chunk) //buffer data push into body value
-          data = Object.assign({}, JSON.parse(Buffer.concat(body).toString()))
-          // at this point, `body` has the entire request body stored in it as a string and transform into json
+        res.on('data', chunk => {
+            body.push(chunk) //buffer data push into body value
+            data = Object.assign({}, JSON.parse(Buffer.concat(body).toString()))
+            // at this point, `body` has the entire request body stored in it as a string and transform into json
+        })
+        res.on('end',() => {
+          for (let prop in data.rates) {
+            let val = Math.round(1 / data.rates[prop])
+            output[prop] = formatter(val)
+          }
+          resolve(output)
+        })
       })
-      res.on('end',() => {
-        callback(data)
-      })
-    })
+})
+
+
+const kurs = () => {
+  let data = {},
+      done = false
+  getData.then((output) => {
+    data = output
+    done = true
+  })
+  //wait until data has finish
+  require('deasync').loopWhile(function(){return !done;});
+  return data
 }
 
-var coba = kurs((data) => data)
-console.log(coba);
+const tukarNilai = (rupiah,params) => {
 
-
-function asyncFunc() {
-    return new Promise((resolve, reject) => { // (A)
-        setTimeout(() => resolve('DONE'), 100); // (B)
-    });
 }
-let cobx = asyncFunc().then(x => x);
-console.log(cobx);
+
+
+
+console.log(kurs());
 
 module.exports = {
   isValid,
