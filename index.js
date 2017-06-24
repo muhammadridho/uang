@@ -85,7 +85,7 @@ const convertToWords = (number) => {
     return convertToWords((number - (number % 1000000000000))/1000000000000) + "Triliun " + convertToWords(number % 1000000000000);
 }
 
-console.log(toWords(10000));
+console.log(toWords(99678665434));
 
 
 module.exports = {
